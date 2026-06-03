@@ -40,24 +40,28 @@ public class TemperatureConverter {
                 System.out.println("Error: Temperature must be a numeric value.");
             }
 
+
+
             else {
                 double temperature = Double.parseDouble(input);
 
-                System.out.print("Enter the unit (C or F): ");
-                String unit = scnr.nextLine();
+                boolean validUnit = false;
 
-                if (unit.equalsIgnoreCase("C")){
-                    double result = convertTemperature(temperature, unit);
-                    System.out.printf("%.2f C = %.2f F%n", temperature, result);
-                }
+                while (!validUnit) {
+                    System.out.print("Enter the unit (C or F): ");
+                    String unit = scnr.nextLine();
 
-                else if (unit.equalsIgnoreCase("F")){
-                    double result = convertTemperature(temperature, unit);
-                    System.out.printf("%.2f F = %.2f C%n", temperature, result);
-                }
-
-                else {
-                    System.out.println("Error: Unit must be C or F.");
+                    if (unit.equalsIgnoreCase("C")) {
+                        double result = convertTemperature(temperature, unit);
+                        System.out.println(Math.round(result));
+                        validUnit = true;
+                    } else if (unit.equalsIgnoreCase("F")) {
+                        double result = convertTemperature(temperature, unit);
+                        System.out.println(Math.round(result));
+                        validUnit = true;
+                    } else {
+                        System.out.println("Error: Unit must be C or F.");
+                    }
                 }
             }
 
@@ -68,4 +72,3 @@ public class TemperatureConverter {
     }
 
 }
-
